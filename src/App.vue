@@ -8,11 +8,13 @@ import CalSession from '@/components/CalSession.vue';
 <template>
   <!-- 计算器的容器 -->
   <div class="cal">
+    <!-- 左边计算器部分 -->
       <div class="left">
         <CalNav />
         <CalHeader />
         <CalSession />
       </div>
+      <!-- 右边历史记录部分 -->
       <div class="right">
         <CalOld />
       </div>
@@ -30,18 +32,17 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(192, 192, 192);
 }
 .cal{
   width: 80vw;
   height: 57vh;
-  background-color: red;
+  background-color: #f1f3f9;
   display: flex;
   margin-top: 10%;
 }
 .left{
-  flex:1;
-  background-color: blue;
+  flex:2;
   flex-direction: column;
 }
 .right{
