@@ -37,9 +37,10 @@ body{
 .cal{
   width: 80vw;
   height: 57vh;
-  background-color: #f1f3f9;
+  background-color: #f3f3f3;
   display: flex;
   margin-top: 10%;
+  overflow: hidden;
 }
 .left{
   flex:2;

@@ -1,8 +1,18 @@
 <script setup lang="ts">
 
 </script>
-<template >
-    <h1>这是计算器导航部分</h1>
+<template>
+    <div class="calNav">
+        <span>=</span>
+        <span>标准</span>
+        <span>=</span>
+    </div>
 </template>
 <style scoped>
+.calNav{
+    margin-top: 3%;
+}
+.calNav span{
+    margin-left: 5%;
+}
 </style>
