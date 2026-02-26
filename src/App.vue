@@ -22,6 +22,14 @@ import CalSession from '@/components/CalSession.vue';
 </template>
 
 <style>
+@media screen and (max-width:300px) {
+  .right{
+    display: none;
+  }
+  .history{
+    display: block;
+  }
+}
 * {
    margin: 0;
    padding: 0;
@@ -41,12 +49,17 @@ body{
   display: flex;
   margin-top: 10%;
   overflow: hidden;
+  border-radius: 2%;
+  position: relative;
+  flex-direction: row;
 }
 .left{
-  flex:2;
+  flex:1;
+  display: flex;
   flex-direction: column;
+  position: relative;
 }
 .right{
-  flex: 1;
+  flex:1;
 }
 </style>

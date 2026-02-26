@@ -11,52 +11,53 @@
             <button>MS</button>
         </div>
         <div class="keyN">
-            <div class="line">
-                <button>%</button>
+                <button>÷</button>
                 <button>CE</button>
                 <button>C</button>
-                <button>del</button>
-            </div>
-            <div class="line">
+                <button><img src="@/assests/img/delete.png" alt=""></button>
                 <button><i>1/x</i></button>
-                <button>x^2</button>
-                <button>&2</button>
+                <button><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </math></button>
+                <button>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mroot>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </mroot>
+                    </math>
+                </button>
                 <button>/</button>
-            </div>
-            <div class="line">
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button>*</button>
-            </div>
-            <div class="line">
+                <button>×</button>
                 <button>4</button>
                 <button>5</button>
                 <button>6</button>
                 <button>-</button>
-            </div>
-            <div class="line">
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
                 <button>+</button>
-            </div>
-            <div class="line">
                 <button>+/-</button>
                 <button>0</button>
                 <button>.</button>
                 <button class="equal">=</button>
-            </div>
         </div>
     </div>
 </template>
 <style scoped>
 .keyBoard{
     display: flex;
+    flex: 1;
+    min-height: 0;
     flex-direction: column;
     align-content: center;
     justify-items: center;
-    height: 35vh;
     padding-left: 2%;
     padding-bottom: 1%;
 }
@@ -64,13 +65,13 @@
     display: flex;
     flex-direction: row;
 }
-.line{
-    display: flex;
+.keyN{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
 }
 button{
     flex: 1;
-    width:100%;
-    height: 1.3rem;
+    height: 1.5rem;
     font-size: 13px;
     border-radius: 4px;
     background-color: #ffffff;
@@ -101,5 +102,9 @@ button:active{
 }
 .equal:active{
     background-color: #09385c;
+}
+.keyN button img{
+    height: 100%;
+    width: auto;
 }
 </style>
