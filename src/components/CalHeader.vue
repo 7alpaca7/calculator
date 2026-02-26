@@ -22,9 +22,9 @@ const enter = function(){
         <input class="operate" type="text" v-model="displayValue"  @keyup.enter="enter">
     </div>
 </template>
-<style scoped>
+<style>
 .result{
-    height: 15vh;
+    height: 20%;
     width: 100%;
     margin-bottom: 1vh;
     padding-right: 5%;
@@ -32,11 +32,15 @@ const enter = function(){
 }
 .equation{
     padding-top: 2%;
+    width: 100%;
+    height: 40%;
     font-size: 0.7rem;
     color: #9f9f9f;
 }
 .operate{
     font-size: 2.5rem;
+    width: 100%;
+    height: 60%;
     border: none;
     outline: none;
     background-color: #f3f3f3;

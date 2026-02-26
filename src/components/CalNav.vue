@@ -13,8 +13,8 @@
 <style>
 .calNav{
     margin-top: 8px;
-    height: 5vh;
-    width: 80vw ;
+    height: 10%;
+    width: 100% ;
 }
 .calNav button{
     margin-left: 2px;

@@ -89,16 +89,20 @@ const point = ()=>{
         </div>
     </div>
 </template>
-<style scoped>
+<style>
 .keyBoard{
     display: flex;
-    flex: 1;
+    width: 100%;
+    height: 50%;
     min-height: 0;
     flex-direction: column;
-    align-content: center;
-    justify-items: center;
+    /* align-content: center;
+    justify-items: center; */
+    align-content: start;
     padding-left: 2%;
     padding-bottom: 1%;
+    margin-top: auto;
+    margin-bottom: 5%;
 }
 .keyM{
     display: flex;
@@ -144,6 +148,6 @@ button:active{
 }
 .keyN button img{
     height: 100%;
-    width: auto;
+    /* width: auto; */
 }
 </style>

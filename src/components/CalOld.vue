@@ -55,7 +55,8 @@
 .oldNav{
     display: flex;
     flex-direction: row;
-    margin-top:5%;
+    padding-top:5%;
+    width: 30vw;
 }
 .oldNav span{
     flex: 1;

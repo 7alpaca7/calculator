@@ -13,7 +13,7 @@ let bFlag: boolean = false;
 let opFlag: boolean = false;
 let overFlag: boolean = false;
 let zeroFlag: boolean = false;
-let pointFlag:boolean = false;
+let pointFlag: boolean = false;
 const num = (val: string) => {
   if (bFlag) {
     bFlag = false;
@@ -57,7 +57,7 @@ const zero = () => {
   if (equ.value != '')
     clear();
 }
-const point = ()=>{
+const point = () => {
   let t = Number(str.value);
   // if(Math.floor(t)==t)
 }
@@ -79,7 +79,7 @@ function fourCal(o: string) {
     bFlag = true;
   }
   op.value = o;
-  overFlag=false;
+  overFlag = false;
 }
 const yu = () => {
   fourCal("%");
@@ -121,8 +121,8 @@ const deng = () => {
     <div class="left">
       <CalNav />
       <CalHeader v-model:str="str" v-model:a="a" v-model:b="b" v-model:op="op" v-model:equ="equ" />
-      <CalSession @point="point" @yu="yu" @dao="dao" @ping="ping" @sqrt="sqrt" @zero="zero" @num="num" @clear="clear" @add="add"
-        @jian="jian" @cheng="cheng" @chu="chu" @deng="deng" />
+      <CalSession @point="point" @yu="yu" @dao="dao" @ping="ping" @sqrt="sqrt" @zero="zero" @num="num" @clear="clear"
+        @add="add" @jian="jian" @cheng="cheng" @chu="chu" @deng="deng" />
     </div>
     <!-- 右边历史记录部分 -->
     <div class="right">
@@ -132,9 +132,15 @@ const deng = () => {
 </template>
 
 <style>
-@media screen and (max-width:300px) {
+@media screen and (max-width:500px) {
+
+  .left {
+    flex: 1;
+  }
+
   .right {
     display: none;
+    width: 0vw;
   }
 
   .history {
@@ -158,7 +164,7 @@ body {
 
 .cal {
   width: 80vw;
-  height: 57vh;
+  height: 60vh;
   background-color: #f3f3f3;
   display: flex;
   margin-top: 10%;
@@ -169,13 +175,15 @@ body {
 }
 
 .left {
-  flex: 1;
+  width: 50vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
 .right {
-  flex: 1;
+  width: 30vw;
+  height: 60vh;
 }
 </style>
