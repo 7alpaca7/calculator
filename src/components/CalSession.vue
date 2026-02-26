@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['point','zero','num','clear','add','jian','cheng','chu','yu','dao','ping','sqrt','deng']);
+const emit = defineEmits(['shan','point','zero','num','clear','add','jian','cheng','chu','yu','dao','ping','sqrt','deng']);
 const press = (val:number)=>{
     emit("num",""+val);
 }
@@ -39,6 +39,9 @@ const zero = ()=>{
 const point = ()=>{
     emit('point');
 }
+const shan = ()=>{
+    emit('shan');
+}
 </script>
 <template >
     <div class="keyBoard">
@@ -53,7 +56,7 @@ const point = ()=>{
                 <button @click="yu()">%</button>
                 <button @click="zero()">CE</button>
                 <button @click="clear()">C</button>
-                <button><img src="@/assests/img/delete.png" alt=""></button>
+                <button @click="shan()"><img src="@/assests/img/delete.png" alt=""></button>
                 <button @click="dao()"><i>1/x</i></button>
                 <button @click="ping()"><math xmlns="http://www.w3.org/1998/Math/MathML">
                         <msup>

@@ -13,8 +13,13 @@ let bFlag: boolean = false;
 let opFlag: boolean = false;
 let overFlag: boolean = false;
 let zeroFlag: boolean = false;
-let pointFlag: boolean = false;
+let resetFlag:boolean = false;
 const num = (val: string) => {
+  if(resetFlag){
+    clear();
+    str.value = val;
+    return;
+  }
   if (bFlag) {
     bFlag = false;
     str.value = val;
@@ -50,6 +55,7 @@ const clear = () => {
   opFlag = false;
   overFlag = false;
   zeroFlag = false;
+  resetFlag = false;
 }
 const zero = () => {
   str.value = "0";
@@ -57,22 +63,41 @@ const zero = () => {
   if (equ.value != '')
     clear();
 }
+function isNumeric(s: string) {
+  return /^[0-9]+$/.test(s);
+}
 const point = () => {
-  let t = Number(str.value);
-  // if(Math.floor(t)==t)
+  if (!isNumeric(str.value))
+    return;
+  if (str.value.indexOf(".") == -1) {
+    if (equ.value != "") {
+      clear();
+      str.value = "0."
+    } else
+      str.value = str.value + ".";
+  }
 }
 const dao = () => {
+  if(resetFlag)
+    return;
   str.value = 1 / Number(str.value) + "";
 }
 const ping = () => {
+  if(resetFlag)
+    return;
   str.value = Number(str.value) ** 2 + "";
 }
 const sqrt = () => {
+  if(resetFlag)
+    return;
   str.value = Math.sqrt(Number(str.value)) + "";
 }
 function fourCal(o: string) {
+  if(resetFlag)
+    return;
   if (!opFlag) {
-    a.value = str.value;
+    a.value = Number(str.value) + "";
+    str.value = Number(str.value) + ""
     b.value = '';
     equ.value = '';
     opFlag = true;
@@ -97,21 +122,43 @@ const chu = () => {
   fourCal("/");
 }
 const deng = () => {
-  equ.value = '=';
-  if (!opFlag) {
-    a.value = str.value;
+  if(resetFlag){
+    clear();
     return;
   }
-  b.value = str.value;
+  equ.value = '=';
+  if (!opFlag) {
+    a.value = Number(str.value) + "";
+    return;
+  }
+  b.value = Number(str.value) + "";
   switch (op.value) {
     case "+": str.value = Number(a.value) + Number(b.value) + ""; break;
     case "-": str.value = Number(a.value) - Number(b.value) + ""; break;
     case "*": str.value = Number(a.value) * Number(b.value) + ""; break;
-    case "/": str.value = Number(a.value) / Number(b.value) + ""; break;
     case "%": str.value = Number(a.value) % Number(b.value) + ""; break;
+    case "/": {
+      if(b.value == '0'){
+        b.value = '';
+        str.value = "除数不能为0";
+        resetFlag = true;
+      }else{
+        str.value = Number(a.value) / Number(b.value) + "";
+      }
+    }
   }
   opFlag = false;
   overFlag = true;
+}
+const shan = ()=>{
+  if(!isNumeric(str.value) || equ.value!=''){
+    clear();
+  }
+  if(str.value.length!=1){
+    str.value = str.value.slice(0,-1);
+  }else{
+    str.value = "0";
+  }
 }
 </script>
 <template>
@@ -121,7 +168,7 @@ const deng = () => {
     <div class="left">
       <CalNav />
       <CalHeader v-model:str="str" v-model:a="a" v-model:b="b" v-model:op="op" v-model:equ="equ" />
-      <CalSession @point="point" @yu="yu" @dao="dao" @ping="ping" @sqrt="sqrt" @zero="zero" @num="num" @clear="clear"
+      <CalSession @shan="shan" @point="point" @yu="yu" @dao="dao" @ping="ping" @sqrt="sqrt" @zero="zero" @num="num" @clear="clear"
         @add="add" @jian="jian" @cheng="cheng" @chu="chu" @deng="deng" />
     </div>
     <!-- 右边历史记录部分 -->
