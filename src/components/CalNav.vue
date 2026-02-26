@@ -12,18 +12,19 @@
 </template>
 <style>
 .calNav{
-    margin-top: 2%;
+    margin-top: 8px;
     height: 5vh;
     width: 80vw ;
 }
 .calNav button{
-    margin-left: 1%;
-    margin-right: 1%;
+    margin-left: 2px;
+    margin-right: 1px;
     float: left;
     border: none;
     background-color: #f3f3f3;
     width: 10%;
     outline: none;
+    margin-top: 2px;
 }
 .calNav button:hover{
     background-color: #dcdcdcf6;
@@ -39,9 +40,9 @@
     font-size: 15px;
 }
 .calNav > button > img{
-    margin-top: 1%;
-    height: 5%;
-    width: 40%;
+    margin-top: 1px;
+    height: 15px;
+    width: 15px;
 }
 .gu{
     transform: rotate(180deg);
@@ -55,6 +56,6 @@
     display: none;
 }
 .list{
-    
+    margin-left: 10px;
 }
 </style>

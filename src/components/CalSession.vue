@@ -1,5 +1,26 @@
 <script setup lang="ts">
-
+const emit = defineEmits(['num','clear','add','jian','cheng','chu','yu','dao','ping','sqrt','deng']);
+const press = (val:number)=>{
+    emit("num",""+val);
+}
+const clear = ()=>{
+    emit('clear');
+}
+const add = ()=>{
+    emit('add');
+}
+const jian = ()=>{
+    emit('jian');
+}
+const cheng = ()=>{
+    emit('cheng');
+}
+const chu = ()=>{
+    emit('chu');
+}
+const deng = ()=>{
+    emit('deng');
+}
 </script>
 <template >
     <div class="keyBoard">
@@ -11,8 +32,8 @@
             <button>MS</button>
         </div>
         <div class="keyN">
-                <button>÷</button>
-                <button>CE</button>
+                <button>%</button>
+                <button @click="clear()">CE</button>
                 <button>C</button>
                 <button><img src="@/assests/img/delete.png" alt=""></button>
                 <button><i>1/x</i></button>
@@ -30,23 +51,23 @@
                         </mroot>
                     </math>
                 </button>
-                <button>/</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>×</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
+                <button @click="chu()">÷</button>
+                <button @click="press(7)">7</button>
+                <button @click="press(8)">8</button>
+                <button @click="press(9)">9</button>
+                <button @click="cheng()">×</button>
+                <button @click="press(4)">4</button>
+                <button @click="press(5)">5</button>
+                <button @click="press(6)">6</button>
+                <button @click="jian()">-</button>
+                <button @click="press(1)">1</button>
+                <button @click="press(2)">2</button>
+                <button @click="press(3)">3</button>
+                <button @click="add()">+</button>
                 <button>+/-</button>
-                <button>0</button>
+                <button @click="press(0)">0</button>
                 <button>.</button>
-                <button class="equal">=</button>
+                <button class="equal" @click="deng()">=</button>
         </div>
     </div>
 </template>

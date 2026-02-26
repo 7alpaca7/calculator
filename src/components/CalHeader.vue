@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-const s = ref('')
-const test = function(){
+import { computed } from 'vue';
+const s = defineModel('str',{type:String,default:''});;
+// 自动过滤非数字字符
+const displayValue = computed({
+  get: () => s.value,
+  set: (val: string) => {
+    s.value = val.replace(/[^0-9.]/g, '')
+  }
+})
+const a = defineModel('a',{type:String,default:''});
+const b = defineModel('b',{type:String,default:''});
+const op = defineModel('op',{type:String,default:''});
+const equ = defineModel('equ',{type:String,default:''});
+const enter = function(){
     console.log(s.value);
 }
 </script>
 <template>
     <div class="result">
-        <p class="equation">72 + 34 =</p>
-        <input type="text" class="operate" v-model="s" @keyup.enter="test">
+        <p class="equation">{{ a }} {{ op }} {{ b }}  {{ equ }}</p>
+        <input class="operate" type="text" v-model="displayValue"  @keyup.enter="enter">
     </div>
 </template>
 <style scoped>
