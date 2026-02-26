@@ -3,7 +3,7 @@ import CalHeader from '@/components/CalHeader.vue';
 import CalNav from '@/components/CalNav.vue';
 import CalOld from '@/components/CalOld.vue';
 import CalSession from '@/components/CalSession.vue';
-import { ref} from 'vue';
+import { ref } from 'vue';
 const str = ref("0");
 const a = ref("");
 const op = ref("");
@@ -12,9 +12,17 @@ const equ = ref("");
 let bFlag: boolean = false;
 let opFlag: boolean = false;
 let overFlag: boolean = false;
+let zeroFlag: boolean = false;
+let pointFlag:boolean = false;
 const num = (val: string) => {
+  if (bFlag) {
+    bFlag = false;
+    str.value = val;
+    return;
+  }
   if (overFlag) {
     overFlag = false;
+    zeroFlag = false;
     str.value = val;
     a.value = "";
     op.value = "";
@@ -22,11 +30,11 @@ const num = (val: string) => {
     equ.value = "";
     return;
   }
-  if (bFlag) {
-    bFlag = false;
+  if (zeroFlag) {
     str.value = val;
     return;
   }
+
   if (str.value == "0")
     str.value = val;
   else
@@ -38,6 +46,29 @@ const clear = () => {
   op.value = "";
   b.value = "";
   equ.value = "";
+  bFlag = false;
+  opFlag = false;
+  overFlag = false;
+  zeroFlag = false;
+}
+const zero = () => {
+  str.value = "0";
+  zeroFlag = true;
+  if (equ.value != '')
+    clear();
+}
+const point = ()=>{
+  let t = Number(str.value);
+  // if(Math.floor(t)==t)
+}
+const dao = () => {
+  str.value = 1 / Number(str.value) + "";
+}
+const ping = () => {
+  str.value = Number(str.value) ** 2 + "";
+}
+const sqrt = () => {
+  str.value = Math.sqrt(Number(str.value)) + "";
 }
 function fourCal(o: string) {
   if (!opFlag) {
@@ -48,6 +79,10 @@ function fourCal(o: string) {
     bFlag = true;
   }
   op.value = o;
+  overFlag=false;
+}
+const yu = () => {
+  fourCal("%");
 }
 const add = () => {
   fourCal("+");
@@ -74,9 +109,6 @@ const deng = () => {
     case "*": str.value = Number(a.value) * Number(b.value) + ""; break;
     case "/": str.value = Number(a.value) / Number(b.value) + ""; break;
     case "%": str.value = Number(a.value) % Number(b.value) + ""; break;
-    case "%": str.value = Number(a.value) + Number(b.value) + ""; break;
-    case "%": str.value = Number(a.value) + Number(b.value) + ""; break;
-    case "%": str.value = Number(a.value) + Number(b.value) + ""; break;
   }
   opFlag = false;
   overFlag = true;
@@ -89,7 +121,8 @@ const deng = () => {
     <div class="left">
       <CalNav />
       <CalHeader v-model:str="str" v-model:a="a" v-model:b="b" v-model:op="op" v-model:equ="equ" />
-      <CalSession @num="num" @clear="clear" @add="add" @jian="jian" @cheng="cheng" @chu="chu" @deng="deng" />
+      <CalSession @point="point" @yu="yu" @dao="dao" @ping="ping" @sqrt="sqrt" @zero="zero" @num="num" @clear="clear" @add="add"
+        @jian="jian" @cheng="cheng" @chu="chu" @deng="deng" />
     </div>
     <!-- 右边历史记录部分 -->
     <div class="right">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['num','clear','add','jian','cheng','chu','yu','dao','ping','sqrt','deng']);
+const emit = defineEmits(['point','zero','num','clear','add','jian','cheng','chu','yu','dao','ping','sqrt','deng']);
 const press = (val:number)=>{
     emit("num",""+val);
 }
@@ -21,6 +21,24 @@ const chu = ()=>{
 const deng = ()=>{
     emit('deng');
 }
+const yu = ()=>{
+    emit('yu');
+}
+const dao = ()=>{
+    emit('dao');
+}
+const ping = ()=>{
+    emit('ping');
+}
+const sqrt = ()=>{
+    emit('sqrt');
+}
+const zero = ()=>{
+    emit('zero');
+}
+const point = ()=>{
+    emit('point');
+}
 </script>
 <template >
     <div class="keyBoard">
@@ -32,18 +50,18 @@ const deng = ()=>{
             <button>MS</button>
         </div>
         <div class="keyN">
-                <button>%</button>
-                <button @click="clear()">CE</button>
-                <button>C</button>
+                <button @click="yu()">%</button>
+                <button @click="zero()">CE</button>
+                <button @click="clear()">C</button>
                 <button><img src="@/assests/img/delete.png" alt=""></button>
-                <button><i>1/x</i></button>
-                <button><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <button @click="dao()"><i>1/x</i></button>
+                <button @click="ping()"><math xmlns="http://www.w3.org/1998/Math/MathML">
                         <msup>
                             <mi>x</mi>
                             <mn>2</mn>
                         </msup>
                     </math></button>
-                <button>
+                <button @click="sqrt()">
                     <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mroot>
                             <mi>x</mi>
@@ -66,7 +84,7 @@ const deng = ()=>{
                 <button @click="add()">+</button>
                 <button>+/-</button>
                 <button @click="press(0)">0</button>
-                <button>.</button>
+                <button @click="point()">.</button>
                 <button class="equal" @click="deng()">=</button>
         </div>
     </div>
