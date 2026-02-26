@@ -173,7 +173,7 @@ const shan = ()=>{
     </div>
     <!-- 右边历史记录部分 -->
     <div class="right">
-      <CalOld />
+      <CalOld v-model:str="str" v-model:a="a" v-model:b="b" v-model:op="op" v-model:equ="equ"/>
     </div>
   </div>
 </template>

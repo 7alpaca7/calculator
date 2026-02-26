@@ -139,6 +139,9 @@ button:active{
 .keyM button:hover{
     background-color: #dcdcdcf6;
 }
+.keyM button:active{
+    background-color: #f3f3f3;
+}
 .equal{
     background-color: #09385c;
     color: #fff;
