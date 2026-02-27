@@ -232,5 +232,6 @@ body {
 .right {
   width: 30vw;
   height: 60vh;
+  position: relative;
 }
 </style>

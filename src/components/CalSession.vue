@@ -114,6 +114,7 @@ const shan = ()=>{
 .keyN{
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    box-shadow: 0 0 1px #d8d8d8;
 }
 button{
     flex: 1;

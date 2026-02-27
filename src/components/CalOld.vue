@@ -22,6 +22,9 @@ const clickNav = (e: Event) => {
         one.value.style.textDecoration = "none";
         two.value.style.textDecoration = "underline blue 1px solid";
     }
+};
+const cleanRub = ()=>{
+    history.value = [];
 }
 watch(equ,()=>{
     if(equ.value != '=')
@@ -38,11 +41,13 @@ watch(equ,()=>{
         <span ref="two" @click="clickNav($event)">记忆</span>
     </div>
     <div class="oldAll">
-        <div class="content" v-for="item,index in history.slice().reverse()" :key="index">
+        <p v-if="history.length==0" style="text-align: left;">尚无历史记录</p>
+        <div v-else class="content" v-for="item,index in history.slice().reverse()" :key="index">
             <p>{{ item.equation }}</p>
             <p>{{ item.result }}</p>
         </div>
     </div>
+    <button class="btnRub" title="清空所有历史记录" @click="cleanRub"><img src="@/assests/img/rubbish.png" alt="#"></button>
 </template>
 <style scoped>
 .oldNav {
@@ -84,5 +89,21 @@ watch(equ,()=>{
 }
 .content:active{
     background-color: #f3f3f3;
+}
+.btnRub{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #f3f3f3;
+    width: 10%;
+}
+.btnRub:hover{
+    background-color: #dcdcdcf6;
+}
+.btnRub:active{
+    background-color: #f3f3f3;
+}
+.btnRub img{
+    width: 80%;
 }
 </style>
